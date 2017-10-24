@@ -1,32 +1,40 @@
-$('#btn1').click(function() {
-    let html = "";
+
+//form is submitted when the button is clicked
+const sizePicker = document.querySelector("#sizePicker");
+sizePicker.addEventListener("submit", function(e) {
+    e.preventDefault();
+    html = "";
+    //upon form submission, the grid will be set to empty
     document.getElementById('pixel_canvas').innerHTML = html;
-    makeGrid();
-    return false;
+    //the makeGrid function will be called
+    makeGrid(); 
 });
 
 
 function clickCell() {
+    // all td cells will be collected into "tdx"
     const tdx = document.getElementsByTagName('td');
 
+    // for loops goes through the collection and isolates the cells using index.
     for (var i = 0; i < tdx.length; i++) {
-        tdx[i].addEventListener('click', function(e) {
+        tdx[i].addEventListener('click', function(e) { //when a cell is clicked, color picker will grab the value of color chosen
             let colors = $('#colorPicker').val();
-            e.target.bgColor = colors;
+            //cell will be colored depending on the color chosen
+            e.target.bgColor = colors; 
         });
 
     }
 }
-
+//this function will make the grid
 function makeGrid() {
-    let c = $('#input_height').val() - 1;
-    let r = $('#input_width').val() - 1;
+    let column = $('#input_width').val();
+    let rows = $('#input_height').val();
     let table = document.getElementById('pixel_canvas');
 
-    for (var i = 0; i <= r; i++) {
+    for (var i = 0; i < rows; i++) {
         let row = document.createElement("tr");
 
-        for (var h = 0; h <= c; h++) {
+        for (var h = 0; h < column; h++) {
             let cell = document.createElement("td");
             row.appendChild(cell);
 
@@ -35,6 +43,4 @@ function makeGrid() {
     }
 
     clickCell();
-    return false;
-
 };

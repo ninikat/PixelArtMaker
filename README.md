@@ -9,3 +9,5 @@
 
 Enter your values for height and width. Select submit to create the grid. Use the color picker to choose what colors to color the squares. Create your picture. Profit.
 
+## See it live
+http://pixel_art_maker.surge.sh/
